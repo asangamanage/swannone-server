@@ -34,4 +34,14 @@ public class RecordingSessionControllerTest {
     public void creatRecordingSession() throws Exception {
         mvc.perform(MockMvcRequestBuilders.post("/recordingSession").accept(MediaType.APPLICATION_JSON)).andExpect(content().string(containsString("sessionId")));
     }
+
+    @Test
+    public void getRecordingSession() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.delete("/recordingSession/{sessionId}", 123456).accept(MediaType.APPLICATION_JSON)).andExpect(content().string(containsString("\"sessionId\":\"123456_SID\"")));
+    }
+
+    @Test
+    public void stopRecordingSession() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.delete("/recordingSession/{sessionId}", 123456).accept(MediaType.APPLICATION_JSON)).andExpect(content().string(containsString("\"sessionId\":\"123456_SID\"")));
+    }
 }
